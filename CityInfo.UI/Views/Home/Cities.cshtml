@@ -1,0 +1,41 @@
+﻿@model List<City>
+
+@{
+    ViewData["Title"] = "GetCities";
+    Layout = "_Layout";
+}
+
+<h3>Cities</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 Name
+            </th>
+            <th>
+                 About
+            </th>
+            <th>
+                 Photo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var city in Model)
+{   
+        <tr>
+            <td>
+                <h5>@city.name</h5>
+            </td>
+            <td>
+                @city.info
+            </td>
+            <td>
+                 <img src=@("https://"+city.cityImage.Replace(" ", "%20")) height='300' width='350' >
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

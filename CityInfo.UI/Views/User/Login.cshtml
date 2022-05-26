@@ -1,0 +1,24 @@
+﻿@model User
+
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post)) 
+{
+   <div class="container">
+    <h3>Sign in</h3>
+    <br>
+    <h5>@ViewBag.exMessage</h5>
+
+    <hr>
+    <input type="text" placeholder="Enter Login" name="Login" required>
+    <br><br>
+
+    <input type="password" placeholder="Enter Password" name="Password" required>
+    <br><br>
+    <hr>
+
+    <button type="submit">Sign in</button>
+   </div>   
+}

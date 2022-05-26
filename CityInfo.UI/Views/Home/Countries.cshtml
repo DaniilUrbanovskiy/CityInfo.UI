@@ -1,0 +1,31 @@
+﻿@model List<Country>
+
+@{
+    Layout = "_Layout";
+}
+ 
+<!DOCTYPE html>
+ 
+<html>
+<body>
+    <div>
+        <h3>Countries</h3>            
+        <br />
+        <table> 
+            @for (int i = 0; i < Model.Count; i+=3)
+            {                
+                <tr>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cities" asp-route-countryName="@Model[i].name">@Model[i].name</a></td>             
+                    <td><img src=@("https://"+Model[i].flag.Replace(" ", "%20")) height='50' width='100' ></td>
+
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cities" asp-route-countryName="@Model[i+1].name">@Model[i+1].name</a></td>             
+                    <td><img src=@("https://"+Model[i+1].flag.Replace(" ", "%20")) height='50' width='100' ></td>
+
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cities" asp-route-countryName="@Model[i+2].name">@Model[i+2].name</a></td>             
+                    <td><img src=@("https://"+Model[i+2].flag.Replace(" ", "%20")) height='50' width='100' ></td>
+                </tr>               
+            }
+        </table>
+    </div>
+</body>
+</html>
