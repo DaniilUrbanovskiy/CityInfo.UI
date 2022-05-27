@@ -5,44 +5,138 @@
     Layout = "_Layout";
 }
 
-<h3>Cities</h3>
-<h5>@ViewBag.responseMessage</h5>
+<html>
+    <head>
+        <style type="text/css">   
+                .button-24 {
+                background: #FF4742;
+                border: 1px solid #FF4742;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                display: inline-block;
+                font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                line-height: 16px;
+                min-height: 40px;
+                outline: 0;
+                padding: 12px 14px;
+                text-align: center;
+                text-rendering: geometricprecision;
+                text-transform: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: middle;
+            }
+            .button-24:hover,
+            .button-24:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #FF4742;
+            }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                 Name
-            </th>
-            <th>
-                 About
-            </th>
-            <th>
-                 Photo
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var city in Model)
-{   
-        <tr>
-            <td>
-                <h5>@city.name</h5>
-            </td>
-            <td>
-                @city.info
-            </td>
-            <td>
-                 <img src=@("https://"+city.cityImage.Replace(" ", "%20")) height='300' width='350' >
-            </td>
-            <td>
-                <button><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SetFavourites" asp-route-cityName="@city.name">Add</a></button>
-                <p> 
-                    <button><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="RemoveFavourites" asp-route-cityName="@city.name">Remove</a></button>
-                </p>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            .button-24:active {
+                opacity: .5;
+            }
+
+                .button-25 {
+                background: #00BFFF;
+                border: 1px solid #00BFFF;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                display: inline-block;
+                font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                line-height: 16px;
+                min-height: 40px;
+                outline: 0;
+                padding: 12px 14px;
+                text-align: center;
+                text-rendering: geometricprecision;
+                text-transform: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: middle;
+            }
+            .button-25:hover,
+            .button-25:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #00BFFF;
+            }
+
+            .button-25:active {
+                opacity: .5;
+            }
+          
+.crop{
+	float:left;
+	margin:.5em 10px .5em 0;
+	overflow:hidden; 
+	border:1px solid #ccc;
+	}
+	/* input values to crop the image: top, right, bottom, left */
+.crop img{
+        margin:-90px -23px -66px -20px;
+	}
+        </style>
+    </head>
+
+    <body>
+
+        <h3>Cities</h3>
+        <h5>@ViewBag.responseMessage</h5>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                         Name
+                    </th>
+                    <th>
+                         About
+                    </th>
+                    <th>
+                         Photo
+                    </th>
+                    <th>
+                         Favourites                          
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var city in Model)
+                {   
+                    <tr>
+                        <td>
+                            <h5>@city.name</h5>
+                        </td>
+                        <td>
+                            @city.info
+                        </td>
+                        <td class="crop">>
+                                <a><img src=@("https://"+city.cityImage.Replace(" ", "%20")) height='350' width='415'/></a>
+                        </td>
+                        <td>
+                            <a class="button-25" role="button" asp-area="" asp-controller="Home" asp-action="SetFavourites" asp-route-cityName="@city.name">Add</a>
+                            <br><br>
+                            <p> 
+                              <a class="button-24" role="button" asp-area="" asp-controller="Home" asp-action="RemoveFavourites" asp-route-cityName="@city.name">Remove</a>
+                            </p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>

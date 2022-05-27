@@ -45,11 +45,10 @@ namespace CityInfo.UI.Controllers
             {
                 return View("Login");
             }
-
             var result = CityRequest.GetFavourites(strToken);
-
             var cities = JsonSerializer.Deserialize<List<City>>(result);
             ViewBag.responseMessage = responseMessage;
+
             return View("Cities", cities);
         }
 
@@ -61,7 +60,7 @@ namespace CityInfo.UI.Controllers
             {
                 return View("Login");
             }
-            var response = CityRequest.Favourites(strToken, cityName, "set");
+            var response = CityRequest.SetFavourites(strToken, cityName);
             ViewBag.responseMessage = response.Content.ReadAsStringAsync().Result;
             string responseMessage = ViewBag.responseMessage;
             ViewBag.responseMessage = string.Empty;
@@ -77,7 +76,7 @@ namespace CityInfo.UI.Controllers
             {
                 return View("Login");
             }
-            var response = CityRequest.Favourites(strToken, cityName, "remove");
+            var response = CityRequest.RemoveFavourites(strToken, cityName);
             ViewBag.responseMessage = response.Content.ReadAsStringAsync().Result;
             string responseMessage = ViewBag.responseMessage;
             ViewBag.responseMessage = string.Empty;

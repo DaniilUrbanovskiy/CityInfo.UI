@@ -24,8 +24,7 @@
                     
                     
                     <td><img src=@("https://"+Model[i+2].flag.Replace(" ", "%20")) height='50' width='100' ></td>
-                    <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cities" asp-route-countryName="@Model[i+2].name">@Model[i+2].name</a></td>             
-                   
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cities" asp-route-countryName="@Model[i+2].name">@Model[i+2].name</a></td>                            
                 </tr>               
             }
         </table>
