@@ -16,8 +16,7 @@ namespace CityInfo.UI.Controllers
             {
                 return View("Registr");
             }
-            string accessType = "registr";
-            var response = UserRequest.AccessUser(user, accessType);
+            var response = UserRequest.AccessUser(user, "registr");
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 ViewBag.exMessage = response.Content.ReadAsStringAsync().Result;
@@ -34,8 +33,7 @@ namespace CityInfo.UI.Controllers
             {
                 return View("Login");
             }
-            string accessType = "login";
-            var response = UserRequest.AccessUser(user, accessType);
+            var response = UserRequest.AccessUser(user, "login");
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 ViewBag.exMessage = response.Content.ReadAsStringAsync().Result;
@@ -45,16 +43,11 @@ namespace CityInfo.UI.Controllers
             
             HttpContext.Session.SetString("token", response.Content.ReadAsStringAsync().Result);
 
-            return View("LoginSuccess");                     
+            return RedirectToAction("Countries", "Home");                     
         }
     }
 }
 
 
 
-//var strToken = HttpContext.Session.GetString("token");
 
-//HttpClient client = new HttpClient();
-//client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", strToken);
-//var response2 = client.GetAsync("https://cityinfo-api.azurewebsites.net/user/favourites/get");
-//var a = response2.Result.Content.ReadAsStringAsync().Result;

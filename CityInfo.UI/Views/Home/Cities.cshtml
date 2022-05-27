@@ -6,6 +6,7 @@
 }
 
 <h3>Cities</h3>
+<h5>@ViewBag.responseMessage</h5>
 
 <table class="table">
     <thead>
@@ -34,6 +35,12 @@
             </td>
             <td>
                  <img src=@("https://"+city.cityImage.Replace(" ", "%20")) height='300' width='350' >
+            </td>
+            <td>
+                <button><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SetFavourites" asp-route-cityName="@city.name">Add</a></button>
+                <p> 
+                    <button><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="RemoveFavourites" asp-route-cityName="@city.name">Remove</a></button>
+                </p>
             </td>
         </tr>
 }
