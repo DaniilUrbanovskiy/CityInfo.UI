@@ -1,0 +1,47 @@
+﻿@model InputFileModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h3>Admin page</h3>
+    <h5>@Model.ResponseMessage</h5>
+                      
+    <br>
+@using (Html.BeginForm("AddCountry", "Admin", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    <input type="text" placeholder="Country Name" name="Name" required>
+      <input type="file" name="Image" required>
+      <br><br>
+    <button type="submit">Add</button>
+    <br><br><br>
+}
+
+@using (Html.BeginForm("RemoveCountry", "Admin", FormMethod.Post))
+{
+    <input type="text" placeholder="Country Name" name="Name">
+      <br><br>
+    <button type="submit">Remove</button>
+    <br><br><br>
+}
+
+@using (Html.BeginForm("AddCity", "Admin", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    <input type="text" placeholder="City Name" name="Name" required>
+    <input type="text" placeholder="Country Name" name="CountryName" required>
+    <input type="text" placeholder="Info" name="Info">
+  <input type="file" name="Image" required>
+    <br><br>
+    <button type="submit">Add</button>
+    <br><br><br>
+}
+
+@using (Html.BeginForm("RemoveCity", "Admin", FormMethod.Post))
+{
+    <input type="text" placeholder="City Name" name="Name">
+      <br><br>
+    <button type="submit">Remove</button>
+    <br><br><br>
+}
+</div>   
