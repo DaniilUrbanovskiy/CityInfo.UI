@@ -3,45 +3,119 @@
 @{
     Layout = "_Layout";
 }
+<html>
+    <head>
+        <style type="text/css">
+               .button-24 {
+                background: #FF4742;
+                border: 1px solid #FF4742;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                display: inline-block;
+                font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                line-height: 16px;
+                min-height: 40px;
+                outline: 0;
+                padding: 12px 14px;
+                text-align: center;
+                text-rendering: geometricprecision;
+                text-transform: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: middle;
+            }
+            .button-24:hover,
+            .button-24:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #FF4742;
+            }
 
-<div class="container">
-    <h3>Admin page</h3>
-    <h5>@Model.ResponseMessage</h5>
+            .button-24:active {
+                opacity: .5;
+            }
+
+                .button-26 {
+                background: #00BFFF;
+                border: 1px solid #00BFFF;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                display: inline-block;
+                font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                line-height: 16px;
+                min-height: 40px;
+                outline: 0;
+                padding: 12px 14px;
+                text-align: center;
+                text-rendering: geometricprecision;
+                text-transform: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: middle;
+            }
+            .button-26:hover,
+            .button-26:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #00BFFF;
+            }
+
+            .button-26:active {
+                opacity: .5;
+            }
+        </style>
+    </head>
+    <div class="container">
+        <h3>Admin page</h3>
+        <h5>@Model.ResponseMessage</h5>
                       
-    <br>
-@using (Html.BeginForm("AddCountry", "Admin", FormMethod.Post, new {enctype="multipart/form-data"}))
-{
-    <input type="text" placeholder="Country Name" name="Name" required>
+        <br>
+    @using (Html.BeginForm("AddCountry", "Admin", FormMethod.Post, new {enctype="multipart/form-data"}))
+    {
+        <input type="text" placeholder="Country Name" name="Name" required>
+          <input type="file" name="Image" required>
+          <br><br>
+        <button class="button-26" role="button" type="submit">Add</button>
+        <br><br><br>
+    }
+
+    @using (Html.BeginForm("RemoveCountry", "Admin", FormMethod.Post))
+    {
+        <input type="text" placeholder="Country Name" name="Name">
+          <br><br>
+        <button class="button-24" role="button" type="submit">Remove</button>
+        <br><br><br>
+    }
+
+    @using (Html.BeginForm("AddCity", "Admin", FormMethod.Post, new {enctype="multipart/form-data"}))
+    {
+        <input type="text" placeholder="City Name" name="Name" required>
+        <input type="text" placeholder="Country Name" name="CountryName" required>
+        <input type="text" placeholder="Info" name="Info">
       <input type="file" name="Image" required>
-      <br><br>
-    <button type="submit">Add</button>
-    <br><br><br>
-}
+        <br><br>
+        <button class="button-26" role="button" type="submit">Add</button>
+        <br><br><br>
+    }
 
-@using (Html.BeginForm("RemoveCountry", "Admin", FormMethod.Post))
-{
-    <input type="text" placeholder="Country Name" name="Name">
-      <br><br>
-    <button type="submit">Remove</button>
-    <br><br><br>
-}
-
-@using (Html.BeginForm("AddCity", "Admin", FormMethod.Post, new {enctype="multipart/form-data"}))
-{
-    <input type="text" placeholder="City Name" name="Name" required>
-    <input type="text" placeholder="Country Name" name="CountryName" required>
-    <input type="text" placeholder="Info" name="Info">
-  <input type="file" name="Image" required>
-    <br><br>
-    <button type="submit">Add</button>
-    <br><br><br>
-}
-
-@using (Html.BeginForm("RemoveCity", "Admin", FormMethod.Post))
-{
-    <input type="text" placeholder="City Name" name="Name">
-      <br><br>
-    <button type="submit">Remove</button>
-    <br><br><br>
-}
-</div>   
+    @using (Html.BeginForm("RemoveCity", "Admin", FormMethod.Post))
+    {
+        <input type="text" placeholder="City Name" name="Name">
+          <br><br>
+        <button class="button-24" role="button" type="submit">Remove</button>
+        <br><br><br>
+    }
+    </div>   
+</html>

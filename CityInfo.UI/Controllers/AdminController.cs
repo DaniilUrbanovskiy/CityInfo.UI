@@ -59,9 +59,9 @@ namespace CityInfo.UI.Controllers
 
         public IActionResult AddCity(InputFileModel file)
         {
-            var strToken = HttpContext.Session.GetString("token");
+            var jwtToken = HttpContext.Session.GetString("token");
 
-            var response = CityRequest.AddCities(file, strToken);
+            var response = CityRequest.AddCities(file, jwtToken);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 file.ResponseMessage = $"{file.Name} added";
@@ -78,10 +78,10 @@ namespace CityInfo.UI.Controllers
 
         public IActionResult RemoveCity(InputFileModel file)
         {
-            var strToken = HttpContext.Session.GetString("token");
+            var jwtToken = HttpContext.Session.GetString("token");
             var cityName = file.Name;
 
-            var response = CityRequest.RemoveCities(cityName, strToken);
+            var response = CityRequest.RemoveCities(cityName, jwtToken);
             if (response == HttpStatusCode.OK)
             {
                 file.ResponseMessage = $"{file.Name} removed";
